@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kullanım Şartları — Subo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D0D0F; --surface: #1A1A1E; --surface2: #242428;
+    --border: #2E2E34; --accent: #7B5CF5; --accent-light: #9B7FF7;
+    --accent-surface: #1E1830; --text: #FFFFFF; --text-secondary: #8E8E93;
+    --text-tertiary: #48484A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,13,15,0.8); backdrop-filter: blur(20px); border-bottom: 0.5px solid var(--border); }
+  .nav-logo { font-size: 22px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .lang-toggle { display: flex; border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .lang-btn { padding: 6px 16px; font-size: 12px; font-weight: 500; cursor: pointer; background: transparent; color: var(--text-secondary); border: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .lang-btn.active { background: var(--accent); color: #fff; }
+  .nav-back { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 120px 40px 80px; }
+  .page-header { margin-bottom: 64px; }
+  .page-label { font-size: 12px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; font-family: 'DM Mono', monospace; }
+  .page-header h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 600; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; }
+  .page-header .meta { font-size: 14px; color: var(--text-secondary); }
+
+  .section { margin-bottom: 48px; }
+  .section h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .section-num { width: 26px; height: 26px; border-radius: 6px; background: var(--accent-surface); border: 0.5px solid rgba(123,92,245,0.2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: var(--accent); flex-shrink: 0; font-family: 'DM Mono', monospace; }
+  .section p { font-size: 15px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 300; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: var(--text); font-weight: 500; }
+
+  [lang-content] { display: none; }
+  [lang-content].active { display: block; }
+
+  footer { border-top: 0.5px solid var(--border); padding: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 12px; color: var(--text-tertiary); }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .container { padding: 100px 20px 60px; }
+    footer { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">su<span>bo</span></a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="/" class="nav-back">← Ana Sayfa</a>
+  </div>
+</nav>
+
+<!-- TURKISH -->
+<div lang-content="tr" class="active">
+<div class="container">
+  <div class="page-header">
+    <div class="page-label">Yasal</div>
+    <h1>Kullanım<br>Şartları</h1>
+    <div class="meta">Son güncelleme: Mart 2026</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">01</span> Kabul</h2>
+    <p>Subo uygulamasını ("Uygulama") indirerek veya kullanarak bu Kullanım Şartlarını kabul etmiş sayılırsınız. Kabul etmiyorsanız uygulamayı kullanmayınız.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">02</span> Hizmet Tanımı</h2>
+    <p>Subo, kullanıcıların abonelik, taksit, fatura ve tekrarlayan ödemelerini takip etmelerine yardımcı olan bir mobil uygulamadır. Uygulama bir finans danışmanlığı veya ödeme aracısı hizmeti <strong>değildir</strong>. Gerçek banka hesaplarınıza erişim sağlamaz.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">03</span> Hesap ve Güvenlik</h2>
+    <p>Hesabınızın güvenliğinden siz sorumlusunuz. Şifrenizi kimseyle paylaşmayın. Hesabınızda yetkisiz kullanım fark ederseniz hemen <strong>support@suboapp.com</strong> adresine bildirin.</p>
+    <p>Yanlış, eksik veya yanıltıcı bilgi sağlamak hesabınızın askıya alınmasına neden olabilir.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">04</span> Freemium & Premium</h2>
+    <p>Ücretsiz katmanda en fazla 5 ödeme eklenebilir. Premium abonelik, App Store veya Google Play üzerinden satın alınır ve ilgili platformun iade politikalarına tabidir.</p>
+    <p>Premium aboneliği iptal ettiğinizde mevcut dönem sonuna kadar erişiminiz devam eder. Verileriniz korunur, yalnızca yeni ödeme ekleme kısıtlanır.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">05</span> Kullanıcı İçeriği</h2>
+    <p>Uygulamaya girdiğiniz veriler (ödeme bilgileri, tutarlar, notlar) size aittir. Bu verileri reklamcılık amacıyla kullanmayız. Hesabınızı sildiğinizde tüm verileriniz kalıcı olarak silinir.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">06</span> Kabul Edilemez Kullanım</h2>
+    <p>Aşağıdaki kullanımlar yasaktır: uygulamayı tersine mühendislik yapmak, sisteme yetkisiz erişim sağlamak, başka kullanıcıların verilerine erişmeye çalışmak, uygulamayı yasadışı amaçlarla kullanmak.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">07</span> Sorumluluk Sınırlaması</h2>
+    <p>Uygulama "olduğu gibi" sunulmaktadır. Ödeme hatırlatıcılarının gönderilememesi, veri kaybı veya hizmet kesintileri nedeniyle doğabilecek dolaylı zararlardan sorumlu değiliz. Yedekleme yapmak kullanıcının sorumluluğundadır.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">08</span> Değişiklikler</h2>
+    <p>Bu şartları güncelleyebiliriz. Önemli değişikliklerde uygulama içinde bildirim yapılır. Değişiklik sonrası uygulamayı kullanmaya devam etmeniz yeni şartları kabul ettiğiniz anlamına gelir.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">09</span> Uygulanacak Hukuk</h2>
+    <p>Bu şartlar Türkiye Cumhuriyeti kanunlarına tabidir. Anlaşmazlıklarda Türkiye mahkemeleri yetkilidir.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">10</span> İletişim</h2>
+    <p>Sorularınız için: <strong>support@suboapp.com</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- ENGLISH -->
+<div lang-content="en">
+<div class="container">
+  <div class="page-header">
+    <div class="page-label">Legal</div>
+    <h1>Terms of<br>Service</h1>
+    <div class="meta">Last updated: March 2026</div>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">01</span> Acceptance</h2>
+    <p>By downloading or using Subo ("the App"), you agree to these Terms of Service. If you do not agree, please do not use the App.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">02</span> Service Description</h2>
+    <p>Subo is a mobile app that helps users track subscriptions, installments, bills, and recurring payments. It is <strong>not</strong> a financial advisory or payment processing service and does not access your real bank accounts.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">03</span> Account & Security</h2>
+    <p>You are responsible for maintaining your account security. Do not share your password. If you notice unauthorized access, contact <strong>support@suboapp.com</strong> immediately.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">04</span> Freemium & Premium</h2>
+    <p>The free tier allows up to 5 payments. Premium subscriptions are purchased through the App Store or Google Play and are subject to those platforms' refund policies. Upon cancellation, access continues until the end of the current billing period.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">05</span> User Content</h2>
+    <p>Data you enter (payment info, amounts, notes) belongs to you. We do not use this data for advertising. Upon account deletion, all your data is permanently removed.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">06</span> Prohibited Use</h2>
+    <p>The following are prohibited: reverse engineering the app, unauthorized system access, attempting to access other users' data, using the app for illegal purposes.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">07</span> Limitation of Liability</h2>
+    <p>The App is provided "as is." We are not liable for indirect damages arising from missed notifications, data loss, or service interruptions. Users are responsible for maintaining their own backups.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">08</span> Changes</h2>
+    <p>We may update these terms. In-app notification will be provided for significant changes. Continued use after changes constitutes acceptance of the new terms.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">09</span> Governing Law</h2>
+    <p>These terms are governed by the laws of the Republic of Turkey. Turkish courts have jurisdiction over disputes.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="section-num">10</span> Contact</h2>
+    <p>For questions: <strong>support@suboapp.com</strong></p>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2026 Subo.</div>
+  <div class="footer-links">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="privacy.html">Gizlilik</a>
+    <a href="changelog.html">Sürüm Notları</a>
+    <a href="support.html">Destek</a>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[lang-content]').forEach(el => el.classList.toggle('active', el.getAttribute('lang-content') === lang));
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.toLowerCase() === lang));
+}
+</script>
+</body>
+</html>
