@@ -5,168 +5,225 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Destek — Subo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0D0D0F; --surface: #1A1A1E; --surface2: #242428;
-    --border: #2E2E34; --accent: #7B5CF5; --accent-light: #9B7FF7;
-    --accent-surface: #1E1830; --text: #FFFFFF; --text-secondary: #8E8E93;
-    --text-tertiary: #48484A; --success: #30D158;
+    --bg: #09090b;
+    --surface: #18181b;
+    --border: #27272a;
+    --accent: #7B5CF5;
+    --text: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-tertiary: #52525b;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,13,15,0.8); backdrop-filter: blur(20px); border-bottom: 0.5px solid var(--border); }
-  .nav-logo { font-size: 22px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
-  .nav-logo span { color: var(--accent); }
-  .nav-back { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-  .nav-back:hover { color: var(--text); }
-
-  .container { max-width: 760px; margin: 0 auto; padding: 120px 40px 80px; }
-  .page-header { margin-bottom: 64px; }
-  .page-label { font-size: 12px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; font-family: 'DM Mono', monospace; }
-  .page-header h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 600; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; }
-  .page-header p { font-size: 16px; color: var(--text-secondary); font-weight: 300; }
-
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 64px; }
-  .contact-card {
-    background: var(--surface); border: 0.5px solid var(--border);
-    border-radius: 16px; padding: 28px; transition: border-color 0.2s;
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
   }
-  .contact-card:hover { border-color: rgba(123,92,245,0.3); }
-  .contact-icon { font-size: 28px; margin-bottom: 16px; }
-  .contact-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
-  .contact-card p { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; font-weight: 300; }
-  .contact-card a { color: var(--accent-light); text-decoration: none; font-size: 14px; font-weight: 500; }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
 
-  .faq-section h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 24px; }
-  .faq-item { border-bottom: 0.5px solid var(--border); }
+  .page-header {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Contact form placeholder */
+  .contact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 56px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  .contact-box strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 6px; }
+
+  /* FAQ */
+  .faq-header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: -0.3px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
   .faq-q {
-    width: 100%; background: none; border: none; text-align: left;
-    padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between;
-    align-items: center; gap: 16px; color: var(--text); font-family: 'DM Sans', sans-serif;
-    font-size: 15px; font-weight: 400;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 18px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
   }
-  .faq-q:hover { color: var(--accent-light); }
-  .faq-icon { color: var(--text-secondary); font-size: 18px; flex-shrink: 0; transition: transform 0.2s; }
-  .faq-a { font-size: 14px; color: var(--text-secondary); padding-bottom: 20px; font-weight: 300; line-height: 1.7; display: none; }
+  .faq-q:hover { color: var(--accent); }
+  .faq-icon {
+    color: var(--text-tertiary);
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .faq-a {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding-bottom: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    display: none;
+  }
   .faq-item.open .faq-a { display: block; }
   .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-  footer { border-top: 0.5px solid var(--border); padding: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--text); }
-  .footer-copy { font-size: 12px; color: var(--text-tertiary); }
+  .page-footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
 
-  @media (max-width: 640px) {
-    nav { padding: 16px 20px; }
-    .container { padding: 100px 20px 60px; }
-    .contact-grid { grid-template-columns: 1fr; }
-    footer { padding: 32px 20px; }
+  @media (max-width: 600px) {
+    .wrap { padding: 48px 20px 80px; }
+    .page-header h1 { font-size: 28px; }
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<nav>
-  <a href="/" class="nav-logo">su<span>bo</span></a>
-  <a href="/" class="nav-back">← Ana Sayfa</a>
-</nav>
-
-<div class="container">
   <div class="page-header">
-    <div class="page-label">Destek</div>
-    <h1>Nasıl<br>yardımcı olabiliriz?</h1>
-    <p>Sorunuz varsa aşağıdan ulaşın veya sık sorulan sorulara göz atın.</p>
+    <div class="badge">Destek</div>
+    <h1>Nasıl yardımcı olabiliriz?</h1>
+    <p>Sorunuz varsa sık sorulan sorulara göz atın veya bize ulaşın.</p>
   </div>
 
-  <div class="contact-grid">
-    <div class="contact-card">
-      <div class="contact-icon">✉️</div>
-      <h3>E-posta Desteği</h3>
-      <p>Sorularınızı e-posta ile iletin, en kısa sürede yanıtlayalım.</p>
-      <a href="mailto:support@suboapp.com">support@suboapp.com</a>
-    </div>
-    <div class="contact-card">
-      <div class="contact-icon">📋</div>
-      <h3>Sürüm Notları</h3>
-      <p>Son güncelleme neler getirdi? Tüm değişikliklere göz atın.</p>
-      <a href="changelog.html">Sürüm geçmişini görüntüle →</a>
-    </div>
+  <div class="contact-box">
+    <strong>Bize Ulaşın</strong>
+    İletişim formu yakında buraya eklenecektir.
   </div>
 
-  <div class="faq-section">
-    <h2>Sık Sorulan Sorular</h2>
+  <div class="faq-header">Sık Sorulan Sorular</div>
 
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Subo ücretsiz mi? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Evet, 5 ödemeye kadar tamamen ücretsiz kullanabilirsiniz. Sınırsız ödeme takibi, aile paylaşımı ve gelişmiş özellikler için Premium'a geçebilirsiniz.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Hangi ödeme tiplerini takip edebilirim? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">4 farklı ödeme tipini takip edebilirsiniz: Abonelik (Netflix, Spotify gibi sonsuz tekrar edenler), Taksit (kredi taksiti, telefon taksiti), Fatura (elektrik, su, doğalgaz) ve Tek Seferlik ödemeler.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        "Ödedim" butonu ne işe yarar? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Her ödeme döneminde "Ödedim" butonuna basarak o ayı ödendi olarak işaretleyebilirsiniz. Bu işaret sadece o aya özeldir; diğer aylara taşınmaz. Dashboard'da ödendi/bekliyor özetini bu verilerden görürsünüz.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Taksit takibi nasıl çalışır? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Taksit eklerken toplam taksit sayısını ve aylık tutarı giriyorsunuz. Uygulama her ay kaç taksit ödendiğini, kalan tutarı ve bitiş tarihini otomatik hesaplıyor. Son taksit ödenince ödeme otomatik olarak pasife alınır.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Verilerim güvende mi? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Evet. Verileriniz TLS ve AES-256 şifreli olarak Supabase altyapısında saklanır. Kimlik doğrulama bilgileriniz cihazınızın güvenli depolama alanında (iOS Keychain / Android Keystore) tutulur. Verileriniz reklam amaçlı kullanılmaz ve satılmaz.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Premium'u iptal edersem ne olur? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Premium'u iptal ettiğinizde mevcut 5 ödemeniz korunur, sadece yeni ödeme ekleyemezsiniz. Tüm geçmiş verileriniz ve raporlarınız erişilebilir olmaya devam eder.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Hesabımı nasıl silebilirim? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Ayarlar → Hesap → Hesabı Sil adımlarını izleyin. Onay sonrası tüm verileriniz kalıcı olarak silinir. Bu işlem geri alınamaz.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggle(this)">
-        Dil desteği nedir? <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Subo şu anda Türkçe, İngilizce, İspanyolca, Almanca, Portekizce ve Japonca dillerini desteklemektedir. Ayarlar'dan istediğiniz zaman dil değiştirebilirsiniz.</div>
-    </div>
-
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Subo ücretsiz mi? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Evet, 5 ödemeye kadar tamamen ücretsiz kullanabilirsiniz. Sınırsız ödeme takibi, aile paylaşımı ve gelişmiş özellikler için Premium'a geçebilirsiniz.</div>
   </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Hangi ödeme tiplerini takip edebilirim? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">4 farklı ödeme tipini takip edebilirsiniz: Abonelik (Netflix, Spotify gibi sonsuz tekrar edenler), Taksit (kredi taksiti, telefon taksiti), Fatura (elektrik, su, doğalgaz) ve Tek Seferlik ödemeler.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      "Ödedim" butonu ne işe yarar? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Her ödeme döneminde "Ödedim" butonuna basarak o ayı ödendi olarak işaretleyebilirsiniz. Bu işaret sadece o aya özeldir; diğer aylara taşınmaz. Dashboard'da ödendi/bekliyor özetini bu verilerden görürsünüz.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Taksit takibi nasıl çalışır? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Taksit eklerken toplam taksit sayısını, aylık tutarı ve daha önce ödediğiniz taksit sayısını girersiniz. Uygulama kalan taksit sayısını, kalan toplam tutarı ve bitiş tarihini otomatik hesaplar. Son taksit ödenince ödeme otomatik olarak pasife alınır.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Ay gezgini ne işe yarar? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Ay gezgini ile geçmiş ve gelecek aylara ait ödeme listelerinizi görebilirsiniz. Her aya ait ödeme durumu (ödendi/bekliyor) o aya özeldir ve diğer aylara taşınmaz.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Bildirimler nasıl çalışır? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Ödeme eklerken 1, 3 veya 7 gün öncesi için hatırlatıcı ayarlayabilir ve bildirim saatini belirleyebilirsiniz. "Ödedim" işareti yapıldıktan sonra o aya ait bildirim otomatik iptal edilir.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Verilerim güvende mi? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Evet. Verileriniz TLS ve AES-256 şifreli olarak Supabase altyapısında saklanır. Kimlik doğrulama bilgileriniz cihazınızın güvenli depolama alanında (iOS Keychain / Android Keystore) tutulur. Verileriniz reklam amaçlı kullanılmaz ve satılmaz.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Premium'u iptal edersem ne olur? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Premium'u iptal ettiğinizde mevcut dönem sonuna kadar erişiminiz devam eder. Mevcut ödemeleriniz ve geçmişiniz korunur, yalnızca yeni ödeme ekleme kısıtlanır.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Hesabımı nasıl silebilirim? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Ayarlar → Hesap → Hesabı Sil adımlarını izleyin. Onay sonrası tüm verileriniz kalıcı olarak silinir. Bu işlem geri alınamaz.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Hangi diller destekleniyor? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Subo; Türkçe, İngilizce, İspanyolca, Almanca, Portekizce ve Japonca dillerini desteklemektedir. Ayarlar ekranından istediğiniz zaman dil değiştirebilirsiniz.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Çoklu para birimi destekleniyor mu? <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Evet. TRY, USD, EUR ve diğer para birimlerini destekliyoruz. Ayarlar ekranından varsayılan para biriminizi değiştirebilir, her ödeme için ayrı para birimi seçebilirsiniz (Premium).</div>
+  </div>
+
+  <div class="page-footer">© 2026 Subo. Tüm hakları saklıdır.</div>
+
 </div>
-
-<footer>
-  <div class="footer-copy">© 2026 Subo.</div>
-  <div class="footer-links">
-    <a href="index.html">Ana Sayfa</a>
-    <a href="privacy.html">Gizlilik</a>
-    <a href="terms.html">Kullanım Şartları</a>
-    <a href="changelog.html">Sürüm Notları</a>
-  </div>
-</footer>
-
 <script>
 function toggle(btn) {
   btn.closest('.faq-item').classList.toggle('open');
