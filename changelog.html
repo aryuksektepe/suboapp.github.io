@@ -4,190 +4,227 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sürüm Notları — Subo</title>
-<meta name="description" content="Subo uygulama güncellemeleri ve sürüm geçmişi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0D0D0F; --surface: #1A1A1E; --surface2: #242428;
-    --border: #2E2E34; --accent: #7B5CF5; --accent-light: #9B7FF7;
-    --accent-surface: #1E1830; --text: #FFFFFF; --text-secondary: #8E8E93;
-    --text-tertiary: #48484A; --success: #30D158; --warning: #FFD60A;
-    --error: #FF453A; --info: #0A84FF;
+    --bg: #09090b;
+    --surface: #18181b;
+    --border: #27272a;
+    --accent: #7B5CF5;
+    --text: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-tertiary: #52525b;
+    --green: #22c55e;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --yellow: #eab308;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
-    background: rgba(13,13,15,0.8); backdrop-filter: blur(20px);
-    border-bottom: 0.5px solid var(--border);
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
   }
-  .nav-logo { font-size: 22px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
-  .nav-logo span { color: var(--accent); }
-  .nav-back { font-size: 14px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-  .nav-back:hover { color: var(--text); }
-
-  .container { max-width: 760px; margin: 0 auto; padding: 120px 40px 80px; }
-  .page-header { margin-bottom: 64px; }
-  .page-label { font-size: 12px; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; font-family: 'DM Mono', monospace; }
-  .page-header h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 600; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; }
-  .page-header p { font-size: 16px; color: var(--text-secondary); font-weight: 300; }
-
-  .release { margin-bottom: 48px; position: relative; padding-left: 32px; }
-  .release::before {
-    content: ''; position: absolute; left: 0; top: 8px; bottom: -48px;
-    width: 0.5px; background: var(--border);
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
   }
-  .release:last-child::before { display: none; }
-  .release-dot {
-    position: absolute; left: -5px; top: 8px;
-    width: 11px; height: 11px; border-radius: 50%;
-    background: var(--border); border: 2px solid var(--bg);
-  }
-  .release-dot.latest { background: var(--accent); box-shadow: 0 0 12px rgba(123,92,245,0.5); }
 
-  .release-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .page-header {
+    margin-bottom: 64px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* Release block */
+  .release {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .release:last-of-type {
+    border-bottom: none;
+  }
+
+  .release-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
   .release-version {
-    font-size: 22px; font-weight: 600; letter-spacing: -0.5px;
-    font-family: 'DM Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
   }
-  .release-date { font-size: 13px; color: var(--text-secondary); }
-  .release-badge {
-    font-size: 11px; font-weight: 500; padding: 2px 10px;
-    border-radius: 99px; margin-left: auto;
+  .release-date {
+    font-size: 13px;
+    color: var(--text-tertiary);
   }
-  .badge-latest { background: var(--accent-surface); color: var(--accent-light); border: 0.5px solid rgba(123,92,245,0.3); }
-  .badge-major { background: rgba(10,132,255,0.1); color: var(--info); border: 0.5px solid rgba(10,132,255,0.2); }
-  .badge-minor { background: rgba(48,209,88,0.1); color: var(--success); border: 0.5px solid rgba(48,209,88,0.2); }
-  .badge-patch { background: rgba(142,142,147,0.1); color: var(--text-secondary); border: 0.5px solid var(--border); }
-
-  .changes { display: flex; flex-direction: column; gap: 6px; }
-  .change { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-secondary); padding: 8px 12px; border-radius: 8px; background: var(--surface); }
-  .change:hover { background: var(--surface2); }
-  .change-type {
-    font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 4px;
-    flex-shrink: 0; margin-top: 2px; font-family: 'DM Mono', monospace;
-    text-transform: uppercase; letter-spacing: 0.05em;
+  .release-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 99px;
+    border: 1px solid;
   }
-  .type-new { background: rgba(48,209,88,0.12); color: var(--success); }
-  .type-fix { background: rgba(255,69,58,0.12); color: var(--error); }
-  .type-improve { background: rgba(123,92,245,0.12); color: var(--accent-light); }
-  .type-lang { background: rgba(10,132,255,0.12); color: var(--info); }
+  .tag-latest { color: var(--accent); border-color: rgba(123,92,245,0.3); background: rgba(123,92,245,0.08); }
+  .tag-major  { color: var(--blue);   border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08); }
+  .tag-minor  { color: var(--green);  border-color: rgba(34,197,94,0.3);  background: rgba(34,197,94,0.08); }
+  .tag-patch  { color: var(--text-secondary); border-color: var(--border); background: transparent; }
 
-  .section-divider {
-    font-size: 11px; font-weight: 500; color: var(--text-tertiary);
-    text-transform: uppercase; letter-spacing: 0.1em; margin: 12px 0 8px;
-    font-family: 'DM Mono', monospace;
+  /* Change list */
+  .group-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 20px 0 10px;
+  }
+  .change {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  .change:last-child { border-bottom: none; }
+  .tag {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .tag-new     { background: rgba(34,197,94,0.12);   color: var(--green); }
+  .tag-fix     { background: rgba(239,68,68,0.12);   color: var(--red); }
+  .tag-improve { background: rgba(123,92,245,0.12);  color: var(--accent); }
+  .tag-lang    { background: rgba(59,130,246,0.12);  color: var(--blue); }
+
+  .page-footer {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-tertiary);
   }
 
-  footer { border-top: 0.5px solid var(--border); padding: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--text); }
-  .footer-copy { font-size: 12px; color: var(--text-tertiary); }
-
-  @media (max-width: 640px) {
-    nav { padding: 16px 20px; }
-    .container { padding: 100px 20px 60px; }
-    footer { padding: 32px 20px; }
+  @media (max-width: 600px) {
+    .wrap { padding: 48px 20px 80px; }
+    .page-header h1 { font-size: 28px; }
   }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<nav>
-  <a href="/" class="nav-logo">su<span>bo</span></a>
-  <a href="/" class="nav-back">← Ana Sayfa</a>
-</nav>
-
-<div class="container">
   <div class="page-header">
-    <div class="page-label">Sürüm Geçmişi</div>
-    <h1>Neler<br>değişti?</h1>
+    <div class="badge">Sürüm Geçmişi</div>
+    <h1>Neler değişti?</h1>
     <p>Her güncellemeyle Subo daha iyi hale geliyor.</p>
   </div>
 
   <!-- v1.1.0 -->
   <div class="release">
-    <div class="release-dot latest"></div>
-    <div class="release-header">
+    <div class="release-meta">
       <span class="release-version">v1.1.0</span>
       <span class="release-date">Mart 2026</span>
-      <span class="release-badge badge-latest">En Güncel</span>
+      <span class="release-tag tag-latest">En Güncel</span>
     </div>
-    <div class="section-divider">Yeni Özellikler</div>
-    <div class="changes">
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Tasarım yükseltme — flutter_animate ile kart animasyonları, shimmer skeleton yükleme ekranları</div>
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Hero kartta tutar değişince animasyonlu geçiş</div>
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Sayfa geçiş animasyonları — detay sayfaları sağdan, modal sayfalar aşağıdan açılıyor</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Ayarlar'dan dil değiştirme — uygulama içinden dil seçilebiliyor</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Ödeme silinince ödemeler listesine geri yönlendirme düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Silinen ödeme dashboard ve raporlarda görünmeye devam ediyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Tek seferlik ödeme diğer aylarda da görünüyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Ödendi işareti sonraki aylara taşınıyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Yeni eklenen ödeme hemen "2 aydır işaretlemedin" uyarısı veriyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Tek seferlik ödeme eklerken gereksiz döngü/bildirim alanları gizlendi</div>
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Taksit sayısı sabit seçenekten serbest metin girişine dönüştürüldü</div>
-      <div class="change"><span class="change-type type-lang">Dil</span>Japonca (ja) tam dil desteği eklendi</div>
-    </div>
+
+    <div class="group-label">Yeni</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Ayarlar ekranından dil değiştirme — uygulama içinden dil seçilebiliyor</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Bildirim saati seçimi — kaçta hatırlatılacağını belirleyebiliyorsunuz</div>
+    <div class="change"><span class="tag tag-lang">Dil</span>Japonca (ja) tam dil desteği eklendi</div>
+
+    <div class="group-label">İyileştirme</div>
+    <div class="change"><span class="tag tag-improve">İyileştirme</span>Kart animasyonları ve shimmer skeleton yükleme ekranları eklendi</div>
+    <div class="change"><span class="tag tag-improve">İyileştirme</span>Hero kartta tutar değişince animasyonlu geçiş</div>
+    <div class="change"><span class="tag tag-improve">İyileştirme</span>Taksit sayısı serbest metin girişine dönüştürüldü (1–360 arası)</div>
+    <div class="change"><span class="tag tag-improve">İyileştirme</span>Tek seferlik ödeme eklerken gereksiz döngü ve bildirim alanları gizlendi</div>
+    <div class="change"><span class="tag tag-improve">İyileştirme</span>Bildirim gün seçimi tekli seçime dönüştürüldü (radio davranışı)</div>
+
+    <div class="group-label">Düzeltme</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Ödeme silinince diğer ekranlar (dashboard, raporlar) güncellenmiyor sorunu giderildi</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Tek seferlik ödeme diğer aylarda da görünüyordu — timezone sorunu düzeltildi</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Ödendi işareti sonraki aylara taşınıyordu — UTC/local uyumsuzluğu giderildi</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Yeni eklenen ödeme hemen "kullanılmıyor" uyarısı veriyordu — 60 gün bekleme eklendi</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Taksit bitiş tarihi kalan taksit sayısına göre doğru hesaplanıyor</div>
   </div>
 
   <!-- v1.0.1 -->
   <div class="release">
-    <div class="release-dot"></div>
-    <div class="release-header">
+    <div class="release-meta">
       <span class="release-version">v1.0.1</span>
       <span class="release-date">Mart 2026</span>
-      <span class="release-badge badge-patch">Patch</span>
+      <span class="release-tag tag-patch">Patch</span>
     </div>
-    <div class="changes">
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Taksit tipinde "Ödedim" butonu paid_installments artırmıyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Taksit tamamlanınca listeden silinmiyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>fl_chart boş veri durumunda uygulama çöküyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-fix">Düzeltme</span>Hero kartta yanlış Ödendi/Bekliyor verisi gösteriliyordu — düzeltildi</div>
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Taksit ilerleme çubuğu emoji karakterler yerine gerçek progress bar'a dönüştürüldü</div>
-      <div class="change"><span class="change-type type-improve">İyileştirme</span>Gelecek aylara geçişte ödeme durumları doğru gösteriliyor</div>
-    </div>
+
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Taksit tipinde "Ödedim" butonu taksit sayısını artırmıyordu</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Taksit tamamlanınca listeden silinmiyordu</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Hero kartta yanlış ödendi/bekliyor verisi gösteriliyordu</div>
+    <div class="change"><span class="tag tag-fix">Düzeltme</span>Gelecek aylara geçişte ödeme durumları yanlış gösteriliyordu</div>
+    <div class="change"><span class="tag tag-improve">İyileştirme</span>Taksit ilerleme çubuğu gerçek progress bar'a dönüştürüldü</div>
   </div>
 
   <!-- v1.0.0 -->
   <div class="release">
-    <div class="release-dot"></div>
-    <div class="release-header">
+    <div class="release-meta">
       <span class="release-version">v1.0.0</span>
       <span class="release-date">Mart 2026</span>
-      <span class="release-badge badge-major">İlk Sürüm</span>
+      <span class="release-tag tag-major">İlk Sürüm</span>
     </div>
-    <div class="section-divider">Temel Özellikler</div>
-    <div class="changes">
-      <div class="change"><span class="change-type type-new">Yeni</span>4 ödeme tipi: Abonelik, Taksit, Fatura, Tek Seferlik</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Aylık dashboard — toplam harcama, ödendi/bekliyor özeti</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Ay gezgini — geçmiş ve gelecek aylara göz at</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Taksit takibi — ilerleme çubuğu, kalan tutar, bitiş tarihi</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Ödeme işaretleme — "Ödedim" butonu ile aylık takip</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Ödeme hatırlatıcıları — 1, 3 veya 7 gün önce bildirim</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Gecikme bildirimleri — ödenmeyen ödemelerde uyarı</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Kategori bazlı analiz ve grafikler</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>CSV ve PDF rapor dışa aktarım (Premium)</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Çoklu para birimi desteği — TRY, USD, EUR ve daha fazlası</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Kullanılmayan abonelik uyarısı</div>
-      <div class="change"><span class="change-type type-new">Yeni</span>Freemium model — 5 ödemeye kadar ücretsiz</div>
-      <div class="change"><span class="change-type type-lang">Dil</span>Türkçe, İngilizce, İspanyolca, Almanca, Portekizce dil desteği</div>
-    </div>
+
+    <div class="change"><span class="tag tag-new">Yeni</span>4 ödeme tipi: Abonelik, Taksit, Fatura, Tek Seferlik</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Aylık dashboard — toplam harcama, ödendi/bekliyor özeti</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Ay gezgini — geçmiş ve gelecek aylara göz at</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Taksit takibi — ilerleme çubuğu, kalan tutar, bitiş tarihi</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Ödeme işaretleme — "Ödedim" butonu ile aylık takip</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Ödeme hatırlatıcıları — 1, 3 veya 7 gün önce bildirim</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Kategori bazlı analiz ve grafikler</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Kullanılmayan abonelik uyarısı</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Freemium model — 5 ödemeye kadar ücretsiz</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>CSV ve PDF rapor dışa aktarım (Premium)</div>
+    <div class="change"><span class="tag tag-new">Yeni</span>Çoklu para birimi — TRY, USD, EUR ve daha fazlası</div>
+    <div class="change"><span class="tag tag-lang">Dil</span>Türkçe, İngilizce, İspanyolca, Almanca, Portekizce dil desteği</div>
   </div>
+
+  <div class="page-footer">© 2026 Subo. Tüm hakları saklıdır.</div>
 
 </div>
-
-<footer>
-  <div class="footer-copy">© 2026 Subo.</div>
-  <div class="footer-links">
-    <a href="index.html">Ana Sayfa</a>
-    <a href="privacy.html">Gizlilik</a>
-    <a href="terms.html">Kullanım Şartları</a>
-    <a href="support.html">Destek</a>
-  </div>
-</footer>
-
 </body>
 </html>
