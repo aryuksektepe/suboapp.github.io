@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesabınızı Silme / Delete Your Account — Subo</title>
+  <style>
+    :root {
+      --accent: #7B5CF5;
+      --bg: #0F0F14;
+      --surface: #1A1A24;
+      --border: #2A2A3A;
+      --text: #E8E8F0;
+      --text-secondary: #9090A8;
+      --danger: #E53E3E;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--accent), #5A3FD6);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    .lang-section {
+      margin-bottom: 48px;
+    }
+
+    .lang-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 2px 10px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 28px 0 12px;
+      color: var(--text);
+    }
+
+    p, li {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 16px 16px 16px 56px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .steps li:last-child {
+      border-color: var(--danger);
+      background: rgba(229, 62, 62, 0.06);
+    }
+
+    .steps li:last-child::before {
+      background: var(--danger);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .data-table th,
+    .data-table td {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th {
+      color: var(--text);
+      font-weight: 600;
+      background: var(--surface);
+    }
+
+    .data-table td {
+      color: var(--text-secondary);
+    }
+
+    .warning {
+      background: rgba(229, 62, 62, 0.08);
+      border-left: 3px solid var(--danger);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .warning strong {
+      color: var(--danger);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Hesabınızı Silme</h1>
+    <p>Delete Your Account</p>
+  </div>
+
+  <div class="container">
+
+    <!-- ═══════════════════════════════ TÜRKÇE ═══════════════════════════════ -->
+    <section class="lang-section">
+      <span class="lang-label">Türkçe</span>
+
+      <h2>Hesap Silme Adımları</h2>
+      <ol class="steps">
+        <li>Subo uygulamasını açın.</li>
+        <li>Alt menüden <strong>Ayarlar</strong> sayfasına gidin.</li>
+        <li><strong>"Hesabı Sil"</strong> butonuna tıklayın.</li>
+        <li>Açılan onay dialogunda <strong>"Sil"</strong> butonuna basın.</li>
+        <li>Hesabınız ve tüm verileriniz <strong>kalıcı olarak</strong> silinecektir.</li>
+      </ol>
+
+      <h3>Hangi Veriler Silinir?</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Veri Türü</th>
+            <th>Açıklama</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Kullanıcı profili</td><td>E-posta, ad, hesap bilgileri</td></tr>
+          <tr><td>Abonelik kayıtları</td><td>Tüm abonelik ve ödeme geçmişi</td></tr>
+          <tr><td>Ödeme logları</td><td>İşlem kayıtları</td></tr>
+          <tr><td>Bildirim tercihleri</td><td>Bildirim ayarları ve zamanlamaları</td></tr>
+          <tr><td>Promosyon kod kullanımları</td><td>Kullanılan promosyon kodları ve geçmişi</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Saklama Süresi</h3>
+      <p>Silme işlemi anında gerçekleşir. Tüm veriler 30 gün içinde yedeklerden de kalıcı olarak kaldırılır.</p>
+
+      <div class="warning">
+        <strong>Uyarı:</strong> Bu işlem geri alınamaz. Hesabınızı sildikten sonra verilerinizi kurtarmak mümkün değildir.
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══════════════════════════════ ENGLISH ══════════════════════════════ -->
+    <section class="lang-section">
+      <span class="lang-label">English</span>
+
+      <h2>How to Delete Your Account</h2>
+      <ol class="steps">
+        <li>Open the Subo app.</li>
+        <li>Navigate to the <strong>Settings</strong> page from the bottom menu.</li>
+        <li>Tap the <strong>"Delete Account"</strong> button.</li>
+        <li>In the confirmation dialog, tap <strong>"Delete"</strong>.</li>
+        <li>Your account and all associated data will be <strong>permanently deleted</strong>.</li>
+      </ol>
+
+      <h3>What Data Is Deleted?</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>User profile</td><td>Email, name, account information</td></tr>
+          <tr><td>Subscription records</td><td>All subscription and payment history</td></tr>
+          <tr><td>Payment logs</td><td>Transaction records</td></tr>
+          <tr><td>Notification preferences</td><td>Notification settings and schedules</td></tr>
+          <tr><td>Promo code usage</td><td>Redeemed promo codes and history</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Retention Period</h3>
+      <p>Deletion is immediate. All data is permanently removed from backups within 30 days.</p>
+
+      <div class="warning">
+        <strong>Warning:</strong> This action is irreversible. Once your account is deleted, your data cannot be recovered.
+      </div>
+    </section>
+
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Subo — <a href="mailto:support@suboapp.com">support@suboapp.com</a>
+  </div>
+
+</body>
+</html>
